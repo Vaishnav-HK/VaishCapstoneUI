@@ -1,0 +1,296 @@
+
+a{
+    text-decoration: none;
+    color:#d8d8d8
+}
+
+h1{
+    color:#DA4167;   
+    font-size: 7vh;
+    margin: 0;
+    font-variant: small-caps;
+}
+
+h4{ 
+    color:#F0EFF4;   
+    font-size: 4vh;
+    font-weight: 100;
+}
+
+p{  
+    padding-top: 25px;
+    color:#d8d8d8;   
+    font-size: 143%;
+    margin: 0;
+    line-height: 45px;
+}
+body{
+    background-repeat: no-repeat;
+    background-color:#0C0B1A;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #F0EFF4;
+    margin: 0px;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+.header{
+    position: absolute;
+    width: 100%;
+    font-size: 130%;
+    overflow-x: scroll;
+
+}
+
+.NavContainer{
+    position: fixed;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+    background-image:linear-gradient(180deg,rgba(211, 117, 153, 0.271),rgba(217, 1, 1, 0));
+    display: grid;  
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+    align-self: center;
+    justify-items: center;
+    opacity: 1;
+    animation-name: loadInFromTop;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.NavContainer > div{
+    color: #F0EFF4;
+    padding: 15px 50px 15px 50px;
+    font-variant: small-caps;
+    align-self: center;
+    font-weight: 800;
+    transition: 0.3s;
+    
+}
+
+.NavContainer > div:not(:has(img,.button)):hover{
+    border-bottom: 3px solid #832161;
+    
+}
+
+.NavContainer > div>img:hover{
+    transition: 0.3s;
+    transform: scale(1.3,1.3);
+    
+}
+
+
+.part1{
+    display: flex;
+    overflow: visible;
+    align-self: center;
+    justify-self: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.part2{
+    display: grid;
+    grid-template-areas:
+        "image text";
+    grid-template-columns:minmax(100px,500px) 1fr;
+    grid-template-rows:minmax(100px,500px) 0.7fr;
+    align-self: center;
+    padding: 35px;
+    gap: 25px;
+    border-top:2px solid #4D9D9D;
+    background-image: linear-gradient(90deg,#Da4167,#0c0b1a);
+    transition: background 1s ease;
+    overflow:hidden;
+    overflow:scroll;
+    width: 100%;
+}
+
+.part2 >div.image{
+    overflow: hidden;
+    grid-area: image;
+    border-radius: 100px;
+    border: 5px solid #4D9D9D;
+    background-image: url(./images/food.png);
+    background-size: cover;
+    background-position-x: center;
+}
+.part2 >div.text{
+    grid-area: text;
+}
+
+.part3{
+    display: grid;
+    grid-template-areas: 
+    "title title title"
+    "image1 image2 image3"
+    "sub1 sub2 sub3";
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: minmax(100px, auto) minmax(200px, auto) minmax(100px, auto);
+    gap:10px;
+    padding:5px;
+    border-top:2px solid #4D9D9D;
+    background: #DA4167;
+}
+
+
+.part3>div.title{
+    text-align:center;
+    align-self: center;
+    grid-area: title;
+    color:#0c0b1a;   
+    font-size: 7vh;
+    margin: 0;
+    font-weight: 800;
+    font-variant: small-caps;
+}
+
+.part3>div.image1{
+    overflow: hidden;
+    grid-area: image1;
+    border: 2px solid #4D9D9D;
+    background-image: url(./images/img1.webp);
+    background-size: cover;
+    animation-name: imgFx;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+}
+.part3>div.image2{
+    overflow: hidden;
+    grid-area: image2;
+    border: 2px solid #4D9D9D;
+    background-image: url(./images/im2.jpg);
+    background-size: cover;
+}
+.part3>div.image3{ 
+    overflow: hidden;
+    grid-area: image3;
+    border: 2px solid #4D9D9D;
+    background-image: url(./images/im3.webp);
+    background-size: cover;
+}
+
+.part3>div.sub1{
+    grid-area:sub1;
+    color:#d8d8d8;   
+    font-size: 215%;
+    font-weight: 800;
+    margin:0;
+    text-align:center;
+}
+.part3>div.sub2{
+    grid-area:sub2;
+    font-size: 215%;
+    font-weight: 800;
+    color:#d8d8d8;
+    margin:0;
+    text-align:center;
+}
+.part3>div.sub3{
+    font-weight: 800;
+    grid-area:sub3;
+    font-size: 215%;
+    color:#d8d8d8;
+    margin:0;
+    text-align:center;
+}
+
+.bgVid{   
+    position: relative;
+    width: fit-content;
+    opacity: 0.7;
+    z-index: -1;
+    height: 100%;
+}
+.bgImg{   
+    position: relative;
+    width: 100%;
+    height: 500px;
+    opacity: 0.7;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.vidOverlay{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+@keyframes loadInFromTop{
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+
+.button{
+    background-color:#DA4167;
+    border-radius: 100px;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    padding: 10px 15px 10px 5px;   
+    border: none;
+    width: 100px;
+    transition: 0.2s;
+    border-radius: 100px;
+    border-top-right-radius: 0;
+    align-self: center;
+}
+
+.button:hover{
+    background-image: linear-gradient(0deg,#832161,#DA4167);
+    width: 8rem;       
+}
+
+.specialButton{
+    background-color:#DA4167;
+    border: 5px solid #4D9D9D;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    padding: 20px 15px 20px 15px;
+    width: 30vh;
+    transition: 0.2s;
+    border-radius: 100px;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+
+    align-self: center;
+}
+
+.specialButton:hover{
+    background-color:#DA4167;
+    width: 40vh;       
+    font-size: 130%;
+
+}
+
+@media (max-width: 973px) {
+    .NavContainer{  
+        width: 100%;
+        justify-items: center;
+        grid-template-columns: 1fr;   
+        z-index: 1; 
+    }
+    .NavContainer > div:not(:has(img)){
+        display: none;   
+    }
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title>Welcome to FOOD</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="CssMakesMeWantToDie.css">
+        
+    </header>
+    <body >   
+        <div class="header">
+            <div class="NavContainer">
+                <div ><a href="landing.html" style="color: #DA4167;">Home</a></div>
+                <div><a href="about.html">About&nbspUs</a></div>
+                <div><img src="./icons/logo.png" alt="logo" width="150px"></div>
+                <div>Menu</div>
+                <div><a href="signUp.html"><div class="button">Sign&nbspUp</div></a></div>
+            </div>
+        </div>
+        <div class="part1">
+            <video autoplay muted loop class="bgVid">
+                <source src=./videos/eat.mp4 type="video/mp4">
+            </video>
+            <div class="vidOverlay">
+                <h1>ENJOY FINE DINING</h1> 
+                <h4>Elegant atmosphere, exquisite cuisine, and unforgettable <br>moments in the heart of the city.</h4>
+                <div><a href="signUp.html"><div class="specialButton">Reserve a Table</div></a></div>
+            </div>
+        </div>
+        
+        <div class="part2">
+            <div class="image">
+            </div>
+            <div class="text">
+                <h1>Our Meals Will Blow Your Mind</h1>
+                <p>
+                    We have the finest Michelin-star chefs in the world to create the most elegant and flavorful meals your taste buds will ever experience. We are so confident in the quality of our food that if it doesn't exceed your expectations of sustenance, we'll refund your money - guaranteed.
+                </p>
+            </div>
+        </div>
+        <div class="part3">
+            <div class="title">Our Specialties</div>
+            <div class="image1"></div>
+            <div class="image2"></div>
+            <div class="image3"></div>
+            <div class="sub1">Chinese Cuisine</div>
+            <div class="sub2">Indian Cuisine</div>
+            <div class="sub3">Japanese Cuisine</div>
+        </div>
+        <script>
+            window.onscroll = function (event){
+                let changeAt=30;
+                let scroll = window.scrollY;
+                let NavContainer=document.getElementsByClassName("NavContainer")[0];
+                let part2=document.getElementsByClassName("part2")[0];
+                let text=document.getElementsByClassName("text")[0];
+                NavContainer.style.transition = 'background 0.3s ease';
+                part2.style.transition = 'background 1s ease'; 
+                console.log("Scroll:"+scroll);
+                if (scroll > changeAt) {
+                    NavContainer.style.background="#0C0B1A";
+                }  
+                else{
+                    NavContainer.style.background="";
+                }
+                if (scroll > 500) {
+                    
+                    part2.style.background="#0c0b1a";
+                    
+                }  
+                else{
+                    part2.style.background="#Da4167";
+                    text.style.color="#0c0b1a";
+                    ;
+                }
+          };   
+
+            
+        </script>
+    </body>
+</html>
+    
