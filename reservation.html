@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation</title>
+    <link rel="stylesheet" href="CssMakesMeWantToDie.css">
+    <style>
+        
+        .resTable{
+            width: 100%;
+        }
+        .resTable>td{
+        border-width: 100px;
+        width: 100%;
+    }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        input[type="date"],input[type="time"]{
+            width: 90%;
+        } 
+        
+        
+        .resSubmit {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .resSubmit:hover {
+            background-color: #c0392b;
+        }
+        
+        .confirmation {
+            display: none;
+            background-color: #DA4167;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            color: #3c763d;
+        }
+        
+        @media (max-width: 600px) {
+            .time-date-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header" >
+        <div class="NavContainer" style="background-color: #0C0B1A;">
+            <div ><a href="landing.html" style="color: #DA4167;">Home</a></div>
+            <div><a href="about.html">About&nbspUs</a></div>
+            <div><img src="./icons/logo.png" alt="logo" width="150px"></div>
+            <div>Menu</div>
+            <div><a href="signUp.html"><div class="button">Sign&nbspUp</div></a></div>
+        </div>
+    </div><br><br><br><br><br>
+    
+    <div class="resContainer">
+        <div class="logo">
+            <img src="./icons/logo.png" alt="Logo" width="200px" />
+        </div>
+        <form id="reservationForm"> 
+            <table class="resTable">
+                <tr>
+                    <td colspan="2"><label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required></td>
+                </tr>
+                <tr> 
+                    <td>  
+                        <label for="date">Reservation Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </td>
+                    <td>    
+                        <label for="time">Reservation Time</label>
+                        <input type="time" id="time" name="time" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">    
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Select</option>
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7">7 People</option>
+                            <option value="8">8 People</option>
+                            <option value="large">More than 8 (We'll call you)</option>
+                        </select>
+                    </td>
+                </tr>   
+                <tr>
+                    <td colspan="2">
+                        <label for="occasion">Special Occasion?</label>
+                        <select id="occasion" name="occasion">
+                            <option value="none">None</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="business">Business Meeting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="requests">Special Requests</label>
+                        <textarea id="requests" name="requests" rows="3" placeholder="Allergies, seating preferences, etc."></textarea>
+                    </td>  
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="resSubmit">Reserve Table</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="confirmation" id="confirmationMessage">
+            <h2>Reservation Confirmed!</h2>
+            <p>We're looking forward to serving you.</p>
+            <p id="reservationDetails"></p>
+        </div>
+    </div>
+
+    <script>
+            const form = document.getElementById('reservationForm');
+            const confirmation = document.getElementById('confirmationMessage');
+            const details = document.getElementById('reservationDetails');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const guests = document.getElementById('guests').value;
+                
+                if (!name || !email || !phone || !date || !time || !guests) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+
+
+
+                form.style.display = 'none';
+                confirmation.style.display = 'block';
+        
+                details.innerHTML = "Name: "+  name+"<br>"+
+                    "Date: "+date+ "<br>"+
+                    "Time: "+time+"<br>"+
+                    "Party Size: "+guests+"<br>"+ 
+                    "A confirmation email has been sent to "+email+"<br>"+
+                    "We'll contact you at "+phone+" if there are any changes"
+                ;
+            });
+    </script>
+</body>
+</html>

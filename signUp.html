@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="CssMakesMeWantToDie.css">
+    <style>
+        
+        .resTable{
+            width: 100%;
+        }
+        .resTable>td{
+        border-width: 100px;
+        width: 100%;
+    }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        
+        .resSubmit {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .resSubmit:hover {
+            background-color: #c0392b;
+        }
+        
+        .confirmation {
+            display: none;
+            background-color: #DA4167;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+            color: #3c763d;
+        }
+        
+        @media (max-width: 600px) {
+            .time-date-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header" >
+        <div class="NavContainer" style="background-color: #0C0B1A;">
+            <div ><a href="landing.html" style="color: #DA4167;">Home</a></div>
+            <div><a href="about.html">About&nbspUs</a></div>
+            <div><img src="./icons/logo.png" alt="logo" width="150px"></div>
+            <div>Menu</div>
+            <div><a href="signUp.html"><div class="button">Sign&nbspUp</div></a></div>
+        </div>
+    </div><br><br><br><br><br>
+    
+    <div class="resContainer">
+        <div class="logo">
+            <img src="./icons/logo.png" alt="Logo" width="200px" /><br>
+            <a href="login.html">Already Have an Account? Click Here To Sign In </a>
+        </div>
+        <form id="reservationForm"> 
+            <table class="resTable">
+                <tr>
+                    <td colspan="2"><label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="pwd">Password</label>
+                    <input type="password" id="pwd" name="pwd" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="cpwd">Confirm Password</label>
+                    <input type="password" id="cpwd" name="cpwd" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" class="resSubmit">Reserve Table</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="confirmation" id="confirmationMessage">
+            <h2>ACCOUNT CREATED!</h2>
+            <p>A confirmation E-mail has been sent</p>
+            <p>We're looking forward to serving you.</p>
+        </div>
+    </div>
+
+    <script>
+            const form = document.getElementById('reservationForm');
+            const confirmation = document.getElementById('confirmationMessage');
+            const details = document.getElementById('reservationDetails');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const pwd = document.getElementById('pwd').value;
+                const cpwd = document.getElementById('cpwd').value;
+                if (!name || !email || !pwd || !cpwd ) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                form.style.display = 'none';
+                confirmation.style.display = 'block';
+                if(pwd!=cpwd){
+                    e.preventDefault();
+                    alert("passwords do not match");
+                }
+            });
+    </script>
+</body>
+</html>
